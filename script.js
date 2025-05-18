@@ -1,6 +1,6 @@
 // Fetch items and display them
 async function getItems() {
-    const response = await fetch("http://localhost:3000/items");
+    const response = await fetch("http://localhost:4000/items");
     const items = await response.json();
 
     const list = document.getElementById("shoppingList");
@@ -34,7 +34,7 @@ document.getElementById("itemForm").addEventListener("submit", async (event) => 
     event.preventDefault();
     const name = document.getElementById("itemName").value;
 
-    await fetch("http://localhost:3000/items", {
+    await fetch("http://localhost:4000/items", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name })
@@ -46,6 +46,6 @@ document.getElementById("itemForm").addEventListener("submit", async (event) => 
 
 // Delete items from list
 async function deleteItem(id) {
-    await fetch(`http://localhost:3000/items/${id}`, { method: "DELETE" });
+    await fetch(`http://localhost:4000/items/${id}`, { method: "DELETE" });
     getItems(); // Refresh list
 }
